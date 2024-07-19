@@ -1,10 +1,6 @@
-import { Schema, model, Document, Types } from "mongoose";
-interface IReview extends Document {
-  content: string;
-  business: Types.ObjectId;
-  user: Types.ObjectId;
-  likes: number;
-}
+import { Schema, model } from "mongoose";
+import { IReview } from "../types/reviewsTypes";
+
 const reviewSchema = new Schema<IReview>({
   content: { type: String, required: true },
   business: { type: Schema.Types.ObjectId, ref: "Business", required: true },

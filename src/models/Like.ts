@@ -1,8 +1,6 @@
-import { Schema, model, Document, Types } from "mongoose";
-interface ILike extends Document {
-  review: Types.ObjectId;
-  user: Types.ObjectId;
-}
+import { Schema, model } from "mongoose";
+import { ILike } from "../types/likeTypes";
+
 const likeSchema = new Schema<ILike>({
   review: { type: Schema.Types.ObjectId, ref: "Review", required: true },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
