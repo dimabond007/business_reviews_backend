@@ -13,7 +13,7 @@ interface AuthRequest extends Request {
 
 function verifyToken(req: AuthRequest, res: Response, next: NextFunction) {
   const authHeader =
-    req.headers["authorization"] || req.headers["Authorization"]; // Get the authorization header
+    req.headers["authorization"] || req.headers["Authorization"];
   const token =
     typeof authHeader === "string" ? authHeader.split(" ")[1] : null; // Get the token from the header
   console.log(authHeader);
@@ -25,7 +25,7 @@ function verifyToken(req: AuthRequest, res: Response, next: NextFunction) {
   try {
     const decoded = jwt.verify(token, JWT_SECRET as string) as {
       userId: string;
-    }; // Verify token
+    };
     req.userId = decoded.userId; // Add userId to request object
     next(); // Call next middleware
   } catch (error) {
