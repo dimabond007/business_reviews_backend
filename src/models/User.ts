@@ -1,11 +1,7 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
-interface IUser extends Document {
-  username: string;
-  email: string;
-  password: string;
-  comparePassword(candidatePassword: string): Promise<boolean>;
-}
+import { IUser } from "../types/userTypes";
+
 const userSchema = new Schema<IUser>({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
