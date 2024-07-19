@@ -4,6 +4,8 @@ import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import { MongoError } from "mongodb";
+import { AuthRequest } from "../middleware/auth.middleware";
+import { Error } from "mongoose";
 
 dotenv.config();
 const { JWT_SECRET } = process.env;
@@ -36,10 +38,11 @@ export const login = async (req: Request, res: Response) => {
 export const register = async (req: Request, res: Response) => {
   console.log("register");
   try {
-    const { username, password } = req.body;
+    const { username, password, email } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
-    const user = new User({ username, password: hashedPassword });
+    const user = new User({ username, email, password: hashedPassword });
+
     await user.save();
 
     res.status(201).json({ message: "User registered successfully" });
@@ -51,5 +54,18 @@ export const register = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "User already exists" });
     }
     res.status(500).json({ error: "Registration failed" });
+  }
+};
+
+export const getUserById = async (req: AuthRequest, res: Response) => {
+  try {
+    const user = await User.findById({ _id: req.userId }).lean();
+    if (!user) {
+      throw new Error(`User ${req.userId}`);
+    }
+    const { password, ...userWithoutPassword } = user;
+    res.status(200).json(userWithoutPassword);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to get user by id" });
   }
 };

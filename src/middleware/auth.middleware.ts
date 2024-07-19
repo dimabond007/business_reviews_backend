@@ -7,33 +7,39 @@ dotenv.config();
 
 const { JWT_SECRET } = process.env;
 
-interface AuthRequest extends Request {
+export interface AuthRequest extends Request {
   userId?: string;
 }
 
+interface DecodedToken {
+  userId: string;
+}
 function verifyToken(req: AuthRequest, res: Response, next: NextFunction) {
-  const authHeader =
-    req.headers["authorization"] || req.headers["Authorization"];
-  const token =
-    typeof authHeader === "string" ? authHeader.split(" ")[1] : null; // Get the token from the header
-  console.log(authHeader);
-  if (!token) {
-    console.log("auth.middleware, verifyToken. No token provided");
+  const authHeader = req.header("Authorization") || req.header("authorization");
+  if (!authHeader) {
     return res.status(401).json({ error: "Access denied" });
   }
 
+  let token = authHeader;
+  if (authHeader.startsWith("Bearer ")) {
+    token = authHeader.slice(7).trim();
+  }
+
+  if (!token) {
+    return res.status(401).json({ error: "Access denied" });
+  }
+
+  if (!JWT_SECRET) {
+    throw new Error("JWT_SECRET is not defined in environment variables");
+  }
+
   try {
-    const decoded = jwt.verify(token, JWT_SECRET as string) as {
-      userId: string;
-    };
+    const decoded = jwt.verify(token, JWT_SECRET) as DecodedToken; // Verify token
     req.userId = decoded.userId; // Add userId to request object
     next(); // Call next middleware
   } catch (error) {
-    console.log(
-      "auth.middleware, verifyToken. Error while verifying token",
-      error
-    );
-    res.status(401).json({ error: "Invalid token" });
+    console.error(error);
+    return res.status(401).json({ error: "Invalid token" });
   }
 }
 
