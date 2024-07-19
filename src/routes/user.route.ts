@@ -1,7 +1,9 @@
 import { Router } from "express";
 import { getUser } from "../controllers/user.controller";
 
-const router = Router();
-router.get("/:id", getUser);
+const userRouter = Router();
+userRouter.get("/", getToken);
+userRouter.post("/", registerUser);
+userRouter.get("/:id", getUser);
 
-export default router;
+export default userRouter;
