@@ -14,7 +14,7 @@ businessRouter.get("/", getAllBusiness);
 businessRouter.patch("/review/:id/", updateReview);
 businessRouter.get("/review/:id/like", verifyToken, toggleLike);
 businessRouter.get("/:id/reviews/", getReviewsByBusinessId);
-businessRouter.post("/:id/reviews/", createReview);
-businessRouter.delete("/:id/reviews/:reviewId", deleteReview);
+businessRouter.post("/:id/reviews/", verifyToken, createReview);
+businessRouter.delete("/:id/reviews/:reviewId", verifyToken, deleteReview);
 
 export default businessRouter;

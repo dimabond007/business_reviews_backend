@@ -4,6 +4,7 @@ import Review from "../models/Review";
 import mongoose, { ObjectId, Types } from "mongoose";
 import { AuthRequest } from "../middleware/auth.middleware";
 import Like from "../models/Like";
+import { io } from "../index"; // Import io from index.ts
 
 export const getAllBusiness = async (req: Request, res: Response) => {
   try {
@@ -14,6 +15,7 @@ export const getAllBusiness = async (req: Request, res: Response) => {
     res.status(500).json({ error: "getAllBusiness: " + err.message });
   }
 };
+
 export const getReviewsByBusinessId = async (req: Request, res: Response) => {
   try {
     const businessId = req.params.id;
@@ -31,6 +33,10 @@ export const createReview = async (req: Request, res: Response) => {
     const review = new Review(req.body);
     review.business = businessId;
     await review.save();
+
+    // Emit event to notify clients about the new review
+    io.emit("reviewAdded", review);
+
     res.status(201).send(review);
   } catch (error) {
     const err = error as Error;
@@ -78,6 +84,9 @@ export const toggleLike = async (req: AuthRequest, res: Response) => {
 
     const likesOfReview = await Like.countDocuments({ review: reviewId });
     await Review.findByIdAndUpdate(reviewId, { likes: likesOfReview });
+
+    // Emit event to notify clients about the like update
+    io.emit("reviewLiked", { reviewId, likes: likesOfReview });
 
     res.status(200).json({ message: like ? "Like removed" : "Like added" });
   } catch (error) {
