@@ -17,12 +17,19 @@ export const getAllBusiness = async (req: Request, res: Response) => {
 };
 
 export const getBusinessById = async (req: AuthRequest, res: Response) => {
-  const { id } = req.params;
-  const business = Business.findById(id);
-  if (!business) {
-    return res.status(404).json({ message: "Business not found" });
+  try {
+    const { id } = req.params;
+    const business = await Business.findById(id);
+
+    console.log("business", business);
+    if (!business) {
+      return res.status(404).json({ message: "Business not found" });
+    }
+    res.status(200).json(business);
+  } catch (error) {
+    const err = error as Error;
+    res.status(500).json({ error: "getBusinessById: " + err.message });
   }
-  res.status(200).json(business);
 };
 export const getReviewsByBusinessId = async (req: Request, res: Response) => {
   try {
