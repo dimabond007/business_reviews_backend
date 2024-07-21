@@ -11,13 +11,13 @@ const io = new Server(httpServer, {
   },
 });
 
-io.on("connection", (socket) => {
-  console.log("a user connected");
+// io.on("connection", (socket) => {
+//   console.log("a user connected");
 
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
-  });
-});
+//   socket.on("disconnect", () => {
+//     console.log("user disconnected");
+//   });
+// });
 
 httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
