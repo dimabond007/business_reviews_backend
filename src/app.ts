@@ -4,9 +4,6 @@ import businessRouter from "./routes/business.route";
 import connectDB from "./config/db";
 import cors from "cors";
 
-
-
-
 const app: Application = express();
 
 async function main() {
