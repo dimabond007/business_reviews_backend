@@ -20,8 +20,6 @@ export const getBusinessById = async (req: AuthRequest, res: Response) => {
   try {
     const { id } = req.params;
     const business = await Business.findById(id);
-
-    console.log("business", business);
     if (!business) {
       return res.status(404).json({ message: "Business not found" });
     }
@@ -31,10 +29,14 @@ export const getBusinessById = async (req: AuthRequest, res: Response) => {
     res.status(500).json({ error: "getBusinessById: " + err.message });
   }
 };
+
 export const getReviewsByBusinessId = async (req: Request, res: Response) => {
   try {
     const businessId = req.params.id;
-    const reviews = await Review.find({ business: businessId });
+    const reviews = await Review.find({ business: businessId }).populate(
+      "user",
+      "username"
+    );
     res.status(200).send(reviews);
   } catch (error) {
     const err = error as Error;
