@@ -12,6 +12,7 @@ import { verifyToken } from "../middleware/auth.middleware";
 
 const businessRouter = Router();
 businessRouter.get("/", getAllBusiness);
+// businessRouter.get('/image', getImage)
 businessRouter.patch("/review/:id/", updateReview);
 businessRouter.get("/review/:id/like", verifyToken, toggleLike);
 businessRouter.get("/:id/", getBusinessById);

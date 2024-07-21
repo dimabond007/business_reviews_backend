@@ -102,3 +102,21 @@ export const toggleLike = async (req: AuthRequest, res: Response) => {
     res.status(500).json({ error: "Failed to toggle like" });
   }
 };
+
+// export const getImage = async (req: Request, res: Response) => {
+//   const imageUrl = req.query.url;
+
+//   try {
+//     const response = await axios({
+//       url: imageUrl,
+//       method: "GET",
+//       responseType: "arraybuffer",
+//     });
+
+//     const contentType = response.headers["content-type"];
+//     res.set("Content-Type", contentType);
+//     res.send(response.data);
+//   } catch (error) {
+//     res.status(500).send("Error fetching image");
+//   }
+// };

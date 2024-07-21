@@ -48,6 +48,7 @@ const seedDatabase = async () => {
       {
         name: "Healthy Eats",
         description: "Nutritious and delicious meals delivered to your door.",
+        imageUrl: "EIT_LOGO.png",
       },
       {
         name: "Fitness World",
