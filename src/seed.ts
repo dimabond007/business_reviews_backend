@@ -43,6 +43,7 @@ const seedDatabase = async () => {
       {
         name: "Tech Solutions",
         description: "Innovative tech solutions for modern problems.",
+        imageUrl: "techSolutions.webp",
       },
       {
         name: "Healthy Eats",
