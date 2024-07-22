@@ -5,12 +5,14 @@ interface IBusiness extends Document {
   description: string;
   user: Types.ObjectId;
   imageUrl: string;
+  address: string;
 }
 
 const businessSchema = new Schema<IBusiness>({
   name: { type: String, required: true, unique: true },
   description: { type: String, required: true },
   imageUrl: { type: String },
+  address: { type: String },
 });
 
 const Business = model<IBusiness>("Business", businessSchema);
