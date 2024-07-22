@@ -19,17 +19,17 @@ const seedDatabase = async () => {
     await Like.deleteMany({});
 
     console.log("Previous data cleared");
+
     // Creating Users
     const users = [
-      { username: "alice", email: "alice@example.com", password: "password1" },
-      { username: "bob", email: "bob@example.com", password: "password2" },
-      {
-        username: "charlie",
-        email: "charlie@example.com",
-        password: "password3",
-      },
+      { username: "Daniel", email: "daniel@example.com", password: "123", imgUrl: "Daniel.jpeg" },
+      { username: "Omer", email: "omer@example.com", password: "123", imgUrl: "Omer.jpeg" },
+      { username: "Dima", email: "dima@example.com", password: "123", imgUrl: "Dima.jpeg" },
       { username: "david", email: "david@example.com", password: "password4" },
       { username: "eva", email: "eva@example.com", password: "password5" },
+      { username: "frank", email: "frank@example.com", password: "password6" },
+      { username: "grace", email: "grace@example.com", password: "password7" },
+      { username: "henry", email: "henry@example.com", password: "password8" },
     ];
 
     for (const user of users) {
@@ -44,23 +44,42 @@ const seedDatabase = async () => {
         name: "Tech Solutions",
         description: "Innovative tech solutions for modern problems.",
         imageUrl: "techSolutions.webp",
+        
       },
       {
         name: "Healthy Eats",
         description: "Nutritious and delicious meals delivered to your door.",
-        imageUrl: "EIT_LOGO.png",
+        imageUrl: "Business1.jpg",
       },
       {
-        name: "Fitness World",
-        description: "Your one-stop shop for all fitness needs.",
+        name: "Digital Innovations",
+        description: "Cutting-edge digital products and services.",
+        imageUrl: "Business2.jpg",
       },
       {
-        name: "Book Haven",
-        description: "A paradise for book lovers of all ages.",
+        name: "Speedy Phone Repair",
+        description: "Quick and reliable smartphone repair service.",
+        imageUrl: "Business3.jpg",
       },
       {
-        name: "Auto Experts",
-        description: "Top-notch car repair and maintenance services.",
+        name: "Green Thumb Gardening",
+        description: "Expert gardening services and plant care.",
+        imageUrl: "Business4.jpg",
+      },
+      {
+        name: "Fitness First",
+        description: "State-of-the-art gym and personal training.",
+        imageUrl: "Business5.webp",
+      },
+      {
+        name: "Cozy Cafe",
+        description: "Artisanal coffee and homemade pastries.",
+        imageUrl: "Business6.jpg",
+      },
+      {
+        name: "Pet Paradise",
+        description: "Premium pet supplies and grooming services.",
+        imageUrl: "Business7.jpg",
       },
     ];
 
@@ -79,24 +98,37 @@ const seedDatabase = async () => {
         user: createdUsers[1]._id,
       },
       {
-        content: "Great place to work out with a wide variety of equipment.",
+        content: "Cutting-edge products that really improved our workflow.",
         business: createdBusinesses[2]._id,
         user: createdUsers[2]._id,
       },
       {
-        content:
-          "I found all the books I was looking for. Wonderful experience!",
+        content: "Fixed my phone in no time. Great service!",
         business: createdBusinesses[3]._id,
         user: createdUsers[3]._id,
       },
       {
-        content: "They fixed my car quickly and at a reasonable price.",
+        content: "They transformed my garden into a beautiful oasis.",
         business: createdBusinesses[4]._id,
         user: createdUsers[4]._id,
       },
       {
-        content:
-          "The tech support was very knowledgeable and solved my problem fast.",
+        content: "Best gym in town with top-notch equipment.",
+        business: createdBusinesses[5]._id,
+        user: createdUsers[5]._id,
+      },
+      {
+        content: "The coffee here is to die for! Lovely atmosphere too.",
+        business: createdBusinesses[6]._id,
+        user: createdUsers[6]._id,
+      },
+      {
+        content: "Great selection of pet supplies and friendly staff.",
+        business: createdBusinesses[7]._id,
+        user: createdUsers[7]._id,
+      },
+      {
+        content: "The tech support was very knowledgeable and solved my problem fast.",
         business: createdBusinesses[0]._id,
         user: createdUsers[1]._id,
       },
@@ -106,20 +138,33 @@ const seedDatabase = async () => {
         user: createdUsers[2]._id,
       },
       {
-        content:
-          "Fitness World helped me achieve my fitness goals. Highly recommend!",
+        content: "Their latest software update is a game-changer.",
         business: createdBusinesses[2]._id,
         user: createdUsers[3]._id,
       },
       {
-        content:
-          "Book Haven has a great selection of books and friendly staff.",
+        content: "Quick, affordable, and high-quality phone repairs.",
         business: createdBusinesses[3]._id,
         user: createdUsers[4]._id,
       },
       {
-        content: "Auto Experts provide excellent service every time.",
+        content: "The team at Green Thumb really knows their plants!",
         business: createdBusinesses[4]._id,
+        user: createdUsers[5]._id,
+      },
+      {
+        content: "Great variety of classes and motivating trainers.",
+        business: createdBusinesses[5]._id,
+        user: createdUsers[6]._id,
+      },
+      {
+        content: "The pastries are always fresh and delicious.",
+        business: createdBusinesses[6]._id,
+        user: createdUsers[7]._id,
+      },
+      {
+        content: "My pets love the toys from Pet Paradise!",
+        business: createdBusinesses[7]._id,
         user: createdUsers[0]._id,
       },
     ];
@@ -129,15 +174,21 @@ const seedDatabase = async () => {
     // Creating Likes and updating Review likes count
     const likes = [
       { review: createdReviews[0]._id, user: createdUsers[1]._id },
-      { review: createdReviews[1]._id, user: createdUsers[0]._id },
+      { review: createdReviews[1]._id, user: createdUsers[2]._id },
       { review: createdReviews[2]._id, user: createdUsers[3]._id },
-      { review: createdReviews[3]._id, user: createdUsers[2]._id },
-      { review: createdReviews[4]._id, user: createdUsers[1]._id },
-      { review: createdReviews[5]._id, user: createdUsers[3]._id },
-      { review: createdReviews[6]._id, user: createdUsers[4]._id },
+      { review: createdReviews[3]._id, user: createdUsers[4]._id },
+      { review: createdReviews[4]._id, user: createdUsers[5]._id },
+      { review: createdReviews[5]._id, user: createdUsers[6]._id },
+      { review: createdReviews[6]._id, user: createdUsers[7]._id },
       { review: createdReviews[7]._id, user: createdUsers[0]._id },
-      { review: createdReviews[8]._id, user: createdUsers[2]._id },
-      { review: createdReviews[9]._id, user: createdUsers[4]._id },
+      { review: createdReviews[8]._id, user: createdUsers[1]._id },
+      { review: createdReviews[9]._id, user: createdUsers[2]._id },
+      { review: createdReviews[10]._id, user: createdUsers[3]._id },
+      { review: createdReviews[11]._id, user: createdUsers[4]._id },
+      { review: createdReviews[12]._id, user: createdUsers[5]._id },
+      { review: createdReviews[13]._id, user: createdUsers[6]._id },
+      { review: createdReviews[14]._id, user: createdUsers[7]._id },
+      { review: createdReviews[15]._id, user: createdUsers[0]._id },
     ];
 
     await Like.insertMany(likes);
