@@ -22,9 +22,24 @@ const seedDatabase = async () => {
 
     // Creating Users
     const users = [
-      { username: "Daniel", email: "daniel@example.com", password: "123", imgUrl: "Daniel.jpeg" },
-      { username: "Omer", email: "omer@example.com", password: "123", imgUrl: "Omer.jpeg" },
-      { username: "Dima", email: "dima@example.com", password: "123", imgUrl: "Dima.jpeg" },
+      {
+        username: "Daniel",
+        email: "daniel@example.com",
+        password: "123",
+        imgUrl: "Daniel.jpeg",
+      },
+      {
+        username: "Omer",
+        email: "omer@example.com",
+        password: "123",
+        imgUrl: "Omer.jpeg",
+      },
+      {
+        username: "Dima",
+        email: "dima@example.com",
+        password: "123",
+        imgUrl: "Dima.jpeg",
+      },
       { username: "david", email: "david@example.com", password: "password4" },
       { username: "eva", email: "eva@example.com", password: "password5" },
       { username: "frank", email: "frank@example.com", password: "password6" },
@@ -44,42 +59,65 @@ const seedDatabase = async () => {
         name: "Tech Solutions",
         description: "Innovative tech solutions for modern problems.",
         imageUrl: "techSolutions.webp",
-        
+        address: "123 Rothschild Blvd",
+        city: "Tel Aviv",
+        district: "Center District",
       },
       {
         name: "Healthy Eats",
         description: "Nutritious and delicious meals delivered to your door.",
         imageUrl: "Business1.jpg",
+        address: "456 Dizengoff St",
+        city: "Tel Aviv",
+        district: "Center District",
       },
       {
         name: "Digital Innovations",
         description: "Cutting-edge digital products and services.",
         imageUrl: "Business2.jpg",
+        address: "789 Jaffa Rd",
+        city: "Jerusalem",
+        district: "Jerusalem District",
       },
       {
         name: "Speedy Phone Repair",
         description: "Quick and reliable smartphone repair service.",
         imageUrl: "Business3.jpg",
+        address: "101 Herzl St",
+        city: "Haifa",
+        district: "Haifa District",
       },
       {
         name: "Green Thumb Gardening",
         description: "Expert gardening services and plant care.",
         imageUrl: "Business4.jpg",
+        address: "202 Weizmann St",
+        city: "Rehovot",
+        district: "Center District",
       },
       {
         name: "Fitness First",
         description: "State-of-the-art gym and personal training.",
         imageUrl: "Business5.webp",
+        address: "303 Begin Blvd",
+        city: "Be'er Sheva",
+        district: "Southern District",
       },
       {
         name: "Cozy Cafe",
         description: "Artisanal coffee and homemade pastries.",
         imageUrl: "Business6.jpg",
+        address: "404 Ben Yehuda St",
+        city: "Tel Aviv",
+        district: "Center District",
       },
       {
         name: "Pet Paradise",
         description: "Premium pet supplies and grooming services.",
         imageUrl: "Business7.jpg",
+        address: "505 Arlozorov St",
+        city: "Ramat Gan",
+        district: "Tel Aviv District",
       },
     ];
 
@@ -128,7 +166,8 @@ const seedDatabase = async () => {
         user: createdUsers[7]._id,
       },
       {
-        content: "The tech support was very knowledgeable and solved my problem fast.",
+        content:
+          "The tech support was very knowledgeable and solved my problem fast.",
         business: createdBusinesses[0]._id,
         user: createdUsers[1]._id,
       },
