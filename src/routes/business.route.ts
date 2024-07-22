@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createReview,
   deleteReview,
+  fetchLikes,
   getAllBusiness,
   getBusinessById,
   getReviewsByBusinessId,
@@ -15,6 +16,7 @@ businessRouter.get("/", getAllBusiness);
 // businessRouter.get('/image', getImage)
 businessRouter.patch("/review/:id/", updateReview);
 businessRouter.get("/review/:id/like", verifyToken, toggleLike);
+businessRouter.get("/likes", fetchLikes);
 businessRouter.get("/:id/", getBusinessById);
 businessRouter.get("/:id/reviews/", getReviewsByBusinessId);
 businessRouter.post("/:id/reviews/", verifyToken, createReview);
