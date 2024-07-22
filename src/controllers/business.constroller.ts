@@ -34,7 +34,7 @@ export const getReviewsByBusinessId = async (req: Request, res: Response) => {
   try {
     const businessId = req.params.id;
     const reviews = await Review.find({ business: businessId })
-      .populate("user", "username")
+      .populate("user", "username imgUrl")
       .populate("likes", "user");
     res.status(200).send(reviews);
   } catch (error) {
