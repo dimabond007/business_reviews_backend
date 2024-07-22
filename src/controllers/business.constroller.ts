@@ -51,7 +51,8 @@ export const createReview = async (req: Request, res: Response) => {
     await review.save();
 
     // Emit event to notify clients about the new review
-    io.emit("reviewAdded", review);
+    const newReviewPop = await review.populate("user", "username imgUrl");
+    io.emit("newReview", newReviewPop);
 
     res.status(201).send(review);
   } catch (error) {
@@ -65,7 +66,9 @@ export const updateReview = async (req: Request, res: Response) => {
     const reviewId = req.params.id;
     const updatedReview = await Review.findByIdAndUpdate(reviewId, req.body, {
       new: true,
-    }).populate("user", "username");
+    }).populate("user", "username imgUrl");
+
+    io.emit("updateReview", updatedReview);
     res.status(200).send(updatedReview);
   } catch (error) {
     const err = error as Error;
@@ -77,6 +80,7 @@ export const deleteReview = async (req: Request, res: Response) => {
   try {
     const reviewId = req.params.reviewId;
     await Review.findByIdAndDelete(reviewId);
+    io.emit("deleteReview", reviewId);
     res.status(200).send({ message: "Review deleted successfully" });
   } catch (error) {
     const err = error as Error;
