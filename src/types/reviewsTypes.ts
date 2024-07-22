@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { ObjectId } from "mongoose";
+import { ILike } from "./likeTypes";
 
 export interface IReview extends Document {
   content: string;

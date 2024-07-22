@@ -33,10 +33,9 @@ export const getBusinessById = async (req: AuthRequest, res: Response) => {
 export const getReviewsByBusinessId = async (req: Request, res: Response) => {
   try {
     const businessId = req.params.id;
-    const reviews = await Review.find({ business: businessId }).populate(
-      "user",
-      "username"
-    );
+    const reviews = await Review.find({ business: businessId })
+      .populate("user", "username")
+      .populate("likes", "user");
     res.status(200).send(reviews);
   } catch (error) {
     const err = error as Error;
@@ -66,7 +65,7 @@ export const updateReview = async (req: Request, res: Response) => {
     const reviewId = req.params.id;
     const updatedReview = await Review.findByIdAndUpdate(reviewId, req.body, {
       new: true,
-    });
+    }).populate("user", "username");
     res.status(200).send(updatedReview);
   } catch (error) {
     const err = error as Error;
@@ -100,32 +99,30 @@ export const toggleLike = async (req: AuthRequest, res: Response) => {
     }
 
     const likesOfReview = await Like.countDocuments({ review: reviewId });
-    await Review.findByIdAndUpdate(reviewId, { likes: likesOfReview });
+    const updatedReview = await Review.findByIdAndUpdate(
+      reviewId,
+      {
+        likes: likesOfReview,
+      },
+      { new: true }
+    ).populate("user", "username");
 
     // Emit event to notify clients about the like update
-    io.emit("reviewLiked", { reviewId, likes: likesOfReview });
+    // io.emit("reviewLiked", { reviewId, likes: likesOfReview });
 
-    res.status(200).json({ message: like ? "Like removed" : "Like added" });
+    res.status(200).json(updatedReview);
   } catch (error) {
     console.error("Error toggling like:", error);
     res.status(500).json({ error: "Failed to toggle like" });
   }
 };
 
-// export const getImage = async (req: Request, res: Response) => {
-//   const imageUrl = req.query.url;
-
-//   try {
-//     const response = await axios({
-//       url: imageUrl,
-//       method: "GET",
-//       responseType: "arraybuffer",
-//     });
-
-//     const contentType = response.headers["content-type"];
-//     res.set("Content-Type", contentType);
-//     res.send(response.data);
-//   } catch (error) {
-//     res.status(500).send("Error fetching image");
-//   }
-// };
+export const fetchLikes = async (req: Request, res: Response) => {
+  try {
+    const likes = await Like.find();
+    res.status(200).json(likes);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error fetching likes" });
+  }
+};
