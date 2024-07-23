@@ -11,5 +11,13 @@ export function buildCriteria(
     criteria.name = { $regex: query.name, $options: "i" };
   }
 
+  if (query.category) {
+    criteria.category = { $regex: query.category, $options: "i" };
+  }
+
+  if (query.district) {
+    criteria.district = { $regex: query.district, $options: "i" };
+  }
+
   return criteria;
 }
