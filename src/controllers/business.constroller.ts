@@ -5,10 +5,13 @@ import mongoose, { ObjectId, Types } from "mongoose";
 import { AuthRequest } from "../middleware/auth.middleware";
 import Like from "../models/Like";
 import { io } from "../index"; // Import io from index.ts
+import { buildCriteria } from "../helpers/business.helper";
 
 export const getAllBusiness = async (req: Request, res: Response) => {
+  const query = req.query;
+  const criteria = buildCriteria(query);
   try {
-    const business = await Business.find({});
+    const business = await Business.find(criteria);
     res.status(200).send(business);
   } catch (error) {
     const err = error as Error;
@@ -109,7 +112,7 @@ export const toggleLike = async (req: AuthRequest, res: Response) => {
         likes: likesOfReview,
       },
       { new: true }
-    ).populate("user", "username");
+    ).populate("user", "username imgUrl");
 
     // Emit event to notify clients about the like update
     io.emit("updateLike", { reviewId, likes: likesOfReview });
