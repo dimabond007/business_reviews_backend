@@ -112,7 +112,7 @@ export const toggleLike = async (req: AuthRequest, res: Response) => {
     ).populate("user", "username");
 
     // Emit event to notify clients about the like update
-    // io.emit("reviewLiked", { reviewId, likes: likesOfReview });
+    io.emit("updateLike", { reviewId, likes: likesOfReview });
 
     res.status(200).json(updatedReview);
   } catch (error) {
