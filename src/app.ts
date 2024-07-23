@@ -13,13 +13,14 @@ async function main() {
   app.use(express.json());
   app.use(cors({}));
 
-  app.use(express.static(path.join(__dirname, 'public')));
+  const publicPath = path.join(__dirname, 'public');
+  app.use(express.static(publicPath));
 
   app.use("/api/user", userRoutes);
   app.use("/api/business", businessRouter);
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(publicPath, 'index.html'));
   });
 }
 
