@@ -6,6 +6,9 @@ interface IBusiness extends Document {
   user: Types.ObjectId;
   imageUrl: string;
   address: string;
+  city: string;
+  district: string;
+  category: string;
 }
 
 const businessSchema = new Schema<IBusiness>({
@@ -13,6 +16,9 @@ const businessSchema = new Schema<IBusiness>({
   description: { type: String, required: true },
   imageUrl: { type: String },
   address: { type: String },
+  city: { type: String },
+  district: { type: String },
+  category: { type: String },
 });
 
 const Business = model<IBusiness>("Business", businessSchema);
