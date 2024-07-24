@@ -155,7 +155,6 @@ const seedDatabase = async () => {
       {
         name: "The Book Nook",
         description: "A cozy spot for book lovers.",
-        imageUrl: "Business8.jpg",
         address: "606 Allenby St",
         city: "Tel Aviv",
         district: "Center District",
@@ -164,7 +163,6 @@ const seedDatabase = async () => {
       {
         name: "Modern Art Gallery",
         description: "Showcasing contemporary art.",
-        imageUrl: "Business9.jpg",
         address: "707 Dizengoff St",
         city: "Tel Aviv",
         district: "Center District",
@@ -173,7 +171,6 @@ const seedDatabase = async () => {
       {
         name: "Gadget World",
         description: "Latest tech gadgets and accessories.",
-        imageUrl: "Business10.jpg",
         address: "808 Rothschild Blvd",
         city: "Tel Aviv",
         district: "Center District",
@@ -182,7 +179,6 @@ const seedDatabase = async () => {
       {
         name: "Fashion Forward",
         description: "Trendy clothing and accessories.",
-        imageUrl: "Business11.jpg",
         address: "909 Ben Yehuda St",
         city: "Tel Aviv",
         district: "Center District",
@@ -191,7 +187,6 @@ const seedDatabase = async () => {
       {
         name: "Baking Bliss",
         description: "Delicious cakes and baked goods.",
-        imageUrl: "Business12.jpg",
         address: "1010 Bialik St",
         city: "Ramat Gan",
         district: "Tel Aviv District",
@@ -200,7 +195,6 @@ const seedDatabase = async () => {
       {
         name: "Tech Haven",
         description: "Your one-stop tech shop.",
-        imageUrl: "Business13.jpg",
         address: "1111 Weizmann St",
         city: "Rehovot",
         district: "Center District",
@@ -209,7 +203,6 @@ const seedDatabase = async () => {
       {
         name: "Artisan Jewelry",
         description: "Handcrafted jewelry for every occasion.",
-        imageUrl: "Business14.jpg",
         address: "1212 King George St",
         city: "Jerusalem",
         district: "Jerusalem District",
@@ -218,7 +211,6 @@ const seedDatabase = async () => {
       {
         name: "Quick Fix Repairs",
         description: "Reliable repair services for all your needs.",
-        imageUrl: "Business15.jpg",
         address: "1313 Herzl St",
         city: "Haifa",
         district: "Haifa District",
@@ -227,7 +219,6 @@ const seedDatabase = async () => {
       {
         name: "Garden Delights",
         description: "Everything you need for a beautiful garden.",
-        imageUrl: "Business16.jpg",
         address: "1414 Jaffa Rd",
         city: "Jerusalem",
         district: "Jerusalem District",
@@ -236,7 +227,6 @@ const seedDatabase = async () => {
       {
         name: "Fit and Fab",
         description: "Fitness equipment and supplements.",
-        imageUrl: "Business17.jpg",
         address: "1515 Dizengoff St",
         city: "Tel Aviv",
         district: "Center District",
@@ -245,7 +235,6 @@ const seedDatabase = async () => {
       {
         name: "Caffeine Dreams",
         description: "Your daily dose of caffeine.",
-        imageUrl: "Business18.jpg",
         address: "1616 Allenby St",
         city: "Tel Aviv",
         district: "Center District",
@@ -254,7 +243,6 @@ const seedDatabase = async () => {
       {
         name: "Pet Pals",
         description: "Everything your pet needs.",
-        imageUrl: "Business19.jpg",
         address: "1717 Arlozorov St",
         city: "Ramat Gan",
         district: "Tel Aviv District",
@@ -263,7 +251,6 @@ const seedDatabase = async () => {
       {
         name: "Smart Home Solutions",
         description: "Smart devices for a smarter home.",
-        imageUrl: "Business20.jpg",
         address: "1818 Begin Blvd",
         city: "Be'er Sheva",
         district: "Southern District",
@@ -272,7 +259,6 @@ const seedDatabase = async () => {
       {
         name: "Organic Eats",
         description: "Organic and healthy food options.",
-        imageUrl: "Business21.jpg",
         address: "1919 Rothschild Blvd",
         city: "Tel Aviv",
         district: "Center District",
@@ -281,7 +267,6 @@ const seedDatabase = async () => {
       {
         name: "Urban Outfitters",
         description: "Trendy fashion for the urban lifestyle.",
-        imageUrl: "Business22.jpg",
         address: "2020 Dizengoff St",
         city: "Tel Aviv",
         district: "Center District",
@@ -290,7 +275,6 @@ const seedDatabase = async () => {
       {
         name: "Elegant Interiors",
         description: "Stylish furniture and home decor.",
-        imageUrl: "Business23.jpg",
         address: "2121 Weizmann St",
         city: "Rehovot",
         district: "Center District",
@@ -299,7 +283,6 @@ const seedDatabase = async () => {
       {
         name: "Healthy Life",
         description: "Supplements and health products.",
-        imageUrl: "Business24.jpg",
         address: "2222 Bialik St",
         city: "Ramat Gan",
         district: "Tel Aviv District",
@@ -308,7 +291,6 @@ const seedDatabase = async () => {
       {
         name: "Tech Emporium",
         description: "A wide range of tech products.",
-        imageUrl: "Business25.jpg",
         address: "2323 Ben Yehuda St",
         city: "Tel Aviv",
         district: "Center District",
@@ -317,7 +299,6 @@ const seedDatabase = async () => {
       {
         name: "Fresh Flowers",
         description: "Beautiful bouquets and floral arrangements.",
-        imageUrl: "Business26.jpg",
         address: "2424 King George St",
         city: "Jerusalem",
         district: "Jerusalem District",
@@ -326,7 +307,6 @@ const seedDatabase = async () => {
       {
         name: "Crafty Creations",
         description: "Handmade crafts and gifts.",
-        imageUrl: "Business27.jpg",
         address: "2525 Herzl St",
         city: "Haifa",
         district: "Haifa District",
@@ -335,7 +315,6 @@ const seedDatabase = async () => {
       {
         name: "Gourmet Grocer",
         description: "Fine foods and gourmet groceries.",
-        imageUrl: "Business28.jpg",
         address: "2626 Jaffa Rd",
         city: "Jerusalem",
         district: "Jerusalem District",
@@ -344,7 +323,6 @@ const seedDatabase = async () => {
       {
         name: "Active Sports",
         description: "Sporting goods and equipment.",
-        imageUrl: "Business29.jpg",
         address: "2727 Dizengoff St",
         city: "Tel Aviv",
         district: "Center District",
@@ -353,7 +331,7 @@ const seedDatabase = async () => {
       {
         name: "Beauty Bliss",
         description: "Skincare and beauty products.",
-        imageUrl: "Business30.jpg",
+
         address: "2828 Allenby St",
         city: "Tel Aviv",
         district: "Center District",
